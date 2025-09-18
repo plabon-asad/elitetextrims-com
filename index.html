@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elite Tex Trims | A reliable business partner with you worldwide.</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #1e1e1e, #00e668c4);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container { max-width: 600px; }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #bbb;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2rem;
+    }
+
+    .unit {
+      text-align: center;
+    }
+
+    .digit {
+      position: relative;
+      width: 65px;
+      height: 90px;
+      background: #111;
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: 2rem;
+      line-height: 90px;
+      color: #ff6600;
+      font-weight: bold;
+    }
+
+    .digit.flip {
+      animation: flip 0.6s ease;
+    }
+
+    @keyframes flip {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(-360deg); }
+    }
+
+    a {
+        color: #ff6600;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .notify-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      background: #ff6600;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+    }
+
+    .notify-btn:hover { background:#e65c00; }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    @media(max-width:480px){
+      h1 {font-size:1.8rem;}
+      .digit {width:55px; height:75px; font-size:1.6rem; line-height:75px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Coming Soon</h1>
+    <p>We are working hard to launch <strong>Elite Text Rims</strong>.<br>Stay tuned for something amazing!</p>
+    
+    <div class="countdown" id="countdown">
+      <div class="unit">
+        <div class="digit" id="days">00</div>
+        <div class="label">Days</div>
+      </div>
+      <div class="unit">
+        <div class="digit" id="hours">00</div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="unit">
+        <div class="digit" id="minutes">00</div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="unit">
+        <div class="digit" id="seconds">00</div>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
+
+    <a href="mailto:elitetextrims.bd@gmail.com" class="notify-btn">Notify Me</a>
+
+    <footer>
+      <p>Powered by <a href="https://www.linkedin.com/in/plabon-asad/" target="_blank">Asad</strong></a>
+    </footer>
+  </div>
+
+  <script>
+    // Set launch date (YYYY-MM-DD format)
+    const launchDate = new Date("2025-10-31T00:00:00").getTime();
+
+    const digits = {
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds")
+    };
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) return;
+
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const time = { days, hours, minutes, seconds };
+
+      for (let unit in time) {
+        const newVal = String(time[unit]).padStart(2,"0");
+        if (digits[unit].textContent !== newVal) {
+          digits[unit].classList.add("flip");
+          setTimeout(() => {
+            digits[unit].textContent = newVal;
+            digits[unit].classList.remove("flip");
+          }, 600);
+        }
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
+
+
